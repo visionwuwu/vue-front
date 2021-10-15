@@ -21,3 +21,8 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# docker ignore file
+package-lock.json
+Dcokerfile
+.dockerignore

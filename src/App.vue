@@ -1,27 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="app-container">
+    <ul>
+      <li v-for="(item, index) in userList" :key="index">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref, onMounted } from 'vue';
+import { getUserList } from './api/user';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld,
+  setup() {
+    const userList = ref<any[]>([]);
+
+    onMounted(async () => {
+      getUserList().then((res) => {
+        console.log(res);
+        userList.value = res;
+      });
+    });
+
+    return {
+      userList,
+    };
   },
 });
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss"></style>
