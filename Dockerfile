@@ -1,5 +1,5 @@
 # 继承ngnix镜像
-FROM ngnix
+FROM nginx
 # docker容器取个名字
 LABEL name="vue-front"
 # 版本号
