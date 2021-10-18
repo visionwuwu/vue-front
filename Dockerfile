@@ -4,7 +4,6 @@ FROM nginx
 LABEL name="vue-front"
 # 版本号
 LABEL version="1.0"
-# 将当前目录下的文件拷贝到web目录下
-COPY ./dist /www/server/nginx/html
-COPY ./vue-front.conf /www/server/panel/vhost/nginx
-EXPOSE 8080
+COPY ./dist /usr/share/nginx/html
+COPY ./vue-front.conf /etc/ngnix/conf.d
+EXPOSE 80
